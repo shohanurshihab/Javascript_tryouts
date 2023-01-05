@@ -1,0 +1,38 @@
+<html>
+    <title>Practice</title>
+    <head>
+    <body>
+        <script type="text/javascript">
+
+            function logchk()
+            {
+               
+                var user=document.getElementById("n1").value;
+                var pass=document.getElementById("p1").value;
+                
+                if(user=="tanik" && pass=="777")
+                {
+                    window.location.href = "http://www.google.com";
+                }
+                else
+                {
+                    document.getElementById("er1").innerHTML="Wrong Credentials"
+                }
+
+            }
+        </script>
+        <form action="#">
+            Username:
+            <input type="text" name="" id="n1">
+            <br>
+            <br>
+            Password:
+            <input type="text" name="" id="p1">
+            <p id="er1"></p>
+            <br>
+            
+            <input type="button" value="Login" onclick="logchk()" style="position: absolute;left: 23%;top: 12%;" >
+        </form>
+    </body>
+</head>
+</html>

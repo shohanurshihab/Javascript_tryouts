@@ -1,0 +1,47 @@
+<html>
+    <title>Clock</title>
+    <body onload="setTime()">
+        <div class="parent">
+            <div id="hour" >hour:</div>
+            <div id="min">min:</div>
+            <div id="second"  >second</div>
+        </div>
+
+    </body>
+</html>
+<style>
+  .parent {
+    position: absolute;
+    left: 45%;
+    top: 45%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size:500%;
+    color: cadetblue;
+display: grid;
+grid-template-columns: repeat(5, 1fr);
+grid-template-rows: repeat(5, 1fr);
+grid-column-gap: 0px;
+grid-row-gap: 0px;
+}
+
+.div1 { grid-area: 3 / 2 / 4 / 3; }
+.div2 { grid-area: 3 / 3 / 4 / 4; }
+.div3 { grid-area: 3 / 4 / 4 / 5; }
+}
+</style>
+<script type="text/javascript">
+    function setTime()
+    {
+        const now =new Date();
+        const seconds = now.getSeconds();
+        const minutes = now.getMinutes()+":";
+        const hour = now.getHours()+":";
+        document.getElementById("second").innerHTML=seconds;
+        document.getElementById("min").innerHTML=minutes;
+        document.getElementById("hour").innerHTML=hour;
+        //document.write(seconds);
+      //  setInterval(setTime,1000);
+
+    }
+
+</script>

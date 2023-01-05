@@ -1,0 +1,53 @@
+<html>
+    <title>
+        Js
+    </title>
+    <head>
+        <body>
+            <script type="text/javascript">
+            
+                function magic()
+                {
+                    //var emot=prompt("Say some:");
+                    var emot=document.getElementById("tanik").value;
+                    switch(emot)
+                    {
+                        case "trash":
+                        document.getElementById("para").innerHTML=("JavaScript is "+emot +"!!!");
+                        break;
+
+                        case "magic":
+                        alert("JavaScript is "+emot +"!!!");
+                        break;
+
+                        default:
+                        var text="JavaScript is "+emot+"!!!";
+                        if(emot=="")
+                        {
+                            document.getElementById("para").innerHTML="👨🏽‍💻";
+                        }
+                        else
+                        {
+                            document.getElementById("para").innerHTML=text;
+                        }
+                    }
+                    
+                    
+                }
+                // function clickme()
+                // {
+                //     document.write(magic(5,6));   
+                // }
+                 //magic("magic","trash");
+                // magic("trash");
+                // magic("okay");
+            </script>
+            <form action="#">
+                <input type="text" name="" id="tanik">
+                <input type="reset" value="💥" onclick="magic()">
+                <input type="submit" value="🙂" onclick="magic()">
+            </form>
+            <p id="para">👨🏽‍💻</p>
+        </body>
+    </head> 
+</html>
