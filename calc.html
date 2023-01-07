@@ -1,0 +1,142 @@
+<html>
+<head>
+  <title>Calculator</title>
+  <style>
+    /* Add some styling to the calculator */
+    .calculator {
+      width: 300px;
+      margin: 0 auto;
+      background-color: #333;
+      color: #fff;
+      border-radius: 10px;
+    }
+
+    .display {
+      background-color: #555;
+      font-size: 20px;
+      text-align: right;
+      padding: 20px;
+      border-radius: 10px 10px 0 0;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      background-color: #444;
+      font-size: 20px;
+      width: 25%;
+      padding: 20px 0;
+      border: none;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background-color: #777;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <div class="display">0</div>
+    <div class="buttons">
+      <button class="button" data-value="AC">AC</button>
+      <button class="button" data-value="/">&divide;</button>
+      <button class="button" data-value="*">&times;</button>
+      <button class="button" data-value="-">-</button>
+      <button class="button" data-value="7">7</button>
+      <button class="button" data-value="8">8</button>
+      <button class="button" data-value="9">9</button>
+      <button class="button" data-value="+">+</button>
+      <button class="button" data-value="4">4</button>
+      <button class="button" data-value="5">5</button>
+      <button class="button" data-value="6">6</button>
+      <button class="button" data-value="1">1</button>
+      <button class="button" data-value="2">2</button>
+      <button class="button" data-value="3">3</button>
+      <button class="button" data-value="0">0</button>
+      <button class="button" data-value=".">.</button>
+        <button class="button" data-value="=">=</button>
+    </div>
+  </div>
+
+
+  
+
+  <script src="calculator.js"></script>
+</body>
+</html>
+
+  <script>
+// Get references to the calculator and display
+const calculator = document.querySelector('.calculator');
+const display = calculator.querySelector('.display');
+
+// Define variables to store the operands and operator
+let operand1 = null;
+let operand2 = null;
+let operator = null;
+
+// Add a click event listener to the calculator
+calculator.addEventListener('click', (event) => {
+  // Get the value of the clicked button
+  const value = event.target.getAttribute('data-value');
+
+  // If the clicked button is not a button, return
+  if (!value) {
+    return;
+  }
+
+  // If the value is a digit, update the operand1 variable and display
+  if (/\d/.test(value)) {
+    // If operand1 is null, set it to the value
+    if (operand1 === null) {
+      operand1 = value;
+    } else {
+      // If an operator has been set, update operand2 and display
+      if (operator) {
+        if (operand2 === null) {
+          operand2 = value;
+        } else {
+          operand2 += value;
+        }
+        display.textContent = operand2;
+      } else {
+        // Otherwise, concatenate the value to operand1 and update the display
+        operand1 += value;
+        display.textContent = operand1;
+      }
+    }
+  } else if (value === '.') {
+    // If the value is a decimal point, and operand1 does not already contain a decimal point, add it to operand1 and update the display
+    if (!operand1.includes('.')) {
+      operand1 += '.';
+      display.textContent = operand1;
+    }
+  } else if (value === '+' || value === '-' || value === '*' || value === '/') {
+    // If the value is an operator, set the operator variable and clear the operand2 variable
+    operator = value;
+    operand2 = null;
+  } else if (value === '=') {
+    // If the value is the equal sign, perform the calculation and update the display with the result
+    if (operand1 !== null && operand2 !== null && operator !== null) {
+      const result = eval(`${operand1} ${operator} ${operand2}`);
+      display.textContent = result;
+      operand1 = result;
+      operand2 = null;
+      operator = null;
+    }
+  } else if (value === 'AC') {
+    // If the value is the AC button, clear all variables and update the display
+    operand1 = null;
+    operand2 = null;
+    operator = null;
+    display.textContent = 0;
+  }
+});
+
+  </script>
+</body>
+</html>

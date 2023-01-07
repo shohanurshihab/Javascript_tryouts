@@ -1,0 +1,48 @@
+<html>
+<head>
+  <title>Chat App</title>
+</head>
+<body>
+  <div id="conversation">
+    <!-- Messages will be added here -->
+  </div>
+  <form id="form">
+    <input type="text" id="message" placeholder="Enter a message">
+    <button type="submit">Send</button>
+  </form>
+  <script>
+    // Get references to the form and conversation div
+    const form = document.getElementById('form');
+    const conversation = document.getElementById('conversation');
+
+    // Add a submit event listener to the form
+    form.addEventListener('submit', (event) => {
+      // Prevent the default form submission behavior
+      event.preventDefault();
+
+      // Get the message input field
+      const messageInput = document.getElementById('message');
+
+      // Determine whether the message was sent by the current user or another user
+      const sender = 'You';
+      const align = 'right';
+      const avatar = 'https://via.placeholder.com/50x50';
+
+      // Add the message to the conversation div
+      conversation.innerHTML += `
+        <div class="message-container ${align}">
+          <div class="avatar">
+            <img src="${avatar}" alt="avatar">
+          </div>
+          <div class="message">
+            <span class="sender">${sender}:</span> ${messageInput.value}
+          </div>
+        </div>
+      `;
+
+      // Clear the message input field
+      messageInput.value = '';
+    });
+  </script>
+</body>
+</html>

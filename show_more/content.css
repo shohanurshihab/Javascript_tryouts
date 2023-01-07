@@ -1,0 +1,40 @@
+body
+{
+    background-color: darkgray;
+}
+.para
+{
+    background-color: rgb(255, 255, 255);
+    max-height: 50%;
+    margin-left: 30%;
+    margin-right: 30%;
+    font-size: medium;
+    overflow: hidden;
+    transition: max-height 1.7s
+}
+
+.para.open
+{
+    max-height: 100%;
+    transition: max-height 1.7s;
+}
+.linkbtn
+{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    width:120px;
+    height: 40px;
+    background-color: #027ad6;
+    color: white;
+    border-radius: 5px;
+    font-size: 120%;
+    text-decoration: none;
+    cursor: pointer;
+    font-family:sans-serif;
+    display: grid;
+    place-content:center;
+    margin-top: 10px;
+   
+
+}
